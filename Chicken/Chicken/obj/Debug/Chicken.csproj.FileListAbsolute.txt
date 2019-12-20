@@ -4,3 +4,6 @@ C:\Users\Administrator\Desktop\33\Chicken\Chicken\bin\Debug\Chicken.pdb
 C:\Users\Administrator\Desktop\33\Chicken\Chicken\obj\Debug\Chicken.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\33\Chicken\Chicken\obj\Debug\Chicken.exe
 C:\Users\Administrator\Desktop\33\Chicken\Chicken\obj\Debug\Chicken.pdb
+C:\Users\Administrator\Documents\GitHub\DataStructuresAndAlgorithm\Chicken\Chicken\bin\Debug\Chicken.exe.config
+C:\Users\Administrator\Documents\GitHub\DataStructuresAndAlgorithm\Chicken\Chicken\obj\Debug\Chicken.exe
+C:\Users\Administrator\Documents\GitHub\DataStructuresAndAlgorithm\Chicken\Chicken\obj\Debug\Chicken.pdb
