@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Document",
+    "\\Document\\CDS004.IListWithGenericsDemo",
+    "\\Document\\CDS004.IListWithGenericsDemo\\BusinessModels",
+    "\\Document\\CDS004.IListWithGenericsDemo\\Properties"
   ],
+  "SelectedNode": "\\Document\\CDS004.IListWithGenericsDemo",
   "PreviewInSolutionExplorer": false
 }
