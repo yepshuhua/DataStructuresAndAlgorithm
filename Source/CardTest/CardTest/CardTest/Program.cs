@@ -15,7 +15,7 @@ namespace ConsoleApplication43
         }
         enum Value
         {
-            Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queue, King, Ace
+            Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queue, King, Ace, Two
         }
         class Card
         {
@@ -40,8 +40,8 @@ namespace ConsoleApplication43
                 c[p] = c[k];
                 c[k] = temp;
             }
-            Card[] E = new Card[14]; Card[] W = new Card[14];
-            Card[] S = new Card[14]; Card[] N = new Card[14];
+            Card[] E = new Card[13]; Card[] W = new Card[13];
+            Card[] S = new Card[13]; Card[] N = new Card[13];
             int A = 0, B = 0, C = 0, D = 0;
             for (int j = 0; j < 52; j++)//分牌
             {
@@ -54,28 +54,28 @@ namespace ConsoleApplication43
                     default: { Console.WriteLine("error"); break; }
                 }
             }
-            var temp1 = E[0].suit;
-            var temp2 = E[0].value;
             Console.WriteLine("东：");
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < E.Length; i++)
             {
-                for (int j = 0; j < 12; j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    if (E[i].suit.CompareTo(E[i + 1].suit)==-1)
+                    if (E[i+1].value < E[i].value)
                     {
-                        temp1 = E[j].suit;
-                        E[j].suit = E[j + 1].suit;
-                        E[j + 1].suit = temp1;
-                        if (E[i].value < E[i].value)
+                        var temp2 = E[i].value;
+                        E[i].value = E[i+1].value;
+                        E[i+1].value = temp2;
+                      
+                        if (E[j+1].suit < E[j].suit)
                         {
-                            temp2 = E[j].value;
-                            E[j].value = E[j + 1].value;
-                            E[j + 1].value = temp2;
-                            Console.Write("{0},{1} ", S[i].suit, S[i].value);
+                            var temp1 = E[j].suit;
+                            E[j].suit = E[j+1].suit;
+                            E[j+1].suit = temp1;
+
                         }
                     }
-
+  
                 }
+                 Console.Write("{0},{1} ", S[i].suit, S[i].value);
             }
             Console.WriteLine();
             Console.WriteLine("南：");

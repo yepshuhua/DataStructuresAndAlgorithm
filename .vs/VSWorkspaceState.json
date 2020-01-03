@@ -2,10 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Document",
-    "\\Document\\CDS004.IListWithGenericsDemo",
-    "\\Document\\CDS004.IListWithGenericsDemo\\BusinessModels",
-    "\\Document\\CDS004.IListWithGenericsDemo\\Properties"
+    "\\Document\\CardTest",
+    "\\Document\\CardTest\\CardTest"
   ],
-  "SelectedNode": "\\Document\\CDS004.IListWithGenericsDemo",
+  "SelectedNode": "\\Document\\CardTest\\CardTest\\CardTest.sln",
   "PreviewInSolutionExplorer": false
 }
