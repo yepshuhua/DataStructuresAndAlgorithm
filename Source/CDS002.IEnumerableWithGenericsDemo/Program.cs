@@ -34,11 +34,11 @@ namespace CDS002.IEnumerableWithGenericsDemo
             StreamReader sr;
             try
             {
-                sr = File.OpenText("e:\\tempFile.txt");
+                sr = File.OpenText("C://Users//Administrator//source//repos//yepshuhua//DataStructuresAndAlgorithm//Document//tempFile.txt");
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine(@"这个例子需要一个名为 C:\temp\tempFile.txt 的文件。");
+                Console.WriteLine(@"这个例子需要一个名为 tempFile.txt 的文件。");
                 return;
             }
             var fileContents = new List<string>(); // 将文本内容添加到一个 List<string> 变量
@@ -54,10 +54,10 @@ namespace CDS002.IEnumerableWithGenericsDemo
                 select line;
 
             sr.Close();
-            Console.WriteLine("数量：" + stringsFound.Count());
+           // Console.WriteLine("数量：" + stringsFound.Count());
 
-            var memoryAfter = GC.GetTotalMemory(false); // 检查不使用迭代子并将结果输出到控制台之后的内存用量.
-            Console.WriteLine("不使用 Iterator 的内存用量 = \t" + string.Format(((memoryAfter - memoryBefore) / 1000).ToString(), "n") + "kb");
+            //var memoryAfter = GC.GetTotalMemory(false); // 检查不使用迭代子并将结果输出到控制台之后的内存用量.
+            //Console.WriteLine("不使用 Iterator 的内存用量 = \t" + string.Format(((memoryAfter - memoryBefore) / 1000).ToString(), "n") + "kb");
         }
 
         /// <summary>
@@ -72,54 +72,83 @@ namespace CDS002.IEnumerableWithGenericsDemo
             try
             {
                 stringsFound =
-                      from line in new StreamReaderEnumerable(@"C:\Users\Administrator\source\repos\yepshuhua\DataStructuresAndAlgorithm\Source\tempFile.txt")
+                      from line in new StreamReaderEnumerable(@"C://Users//Administrator//source//repos//yepshuhua//DataStructuresAndAlgorithm//Document//tempFile.txt")
                       where line.Contains(keyString)
                       select line;
-                int count = 0;
-                int counts = 0;
-                int o = 1;
+                int count = 0;//循环行数
+                int count1 = 0;//计数个数
+                int count2 = 0;//计数行数
+                int oo = 0;//接keyString的位置
+                int bb = 0;//计算上一个keyString与现今keyString相隔
+
                 foreach (var items in stringsFound)
                 {
-                    counts += 1;
+                    count += 1;
+                    //Console.WriteLine(items);
                 }
+
                 foreach (var item in stringsFound)
                 {
-                    count += 1;
-                    int cc = 0;
-                    
-                    for (int i = 0; i < counts; i++)
+                    count1++;
+                    int cc = 0;//计算keyString开始位置
+                    int yy = 0; //接第一个index为-1的数，为一行里最后一个keyString服务
+                    for (int i = 0; i < count; i++)
                     {
-                       
                         int index = item.IndexOf(keyString, cc);
-                        int gg = item.Length - index;
-                            if (cc < item.Count() && index != -1)
+                        //计算keyString13个字符里是否有keyString后输出keyString后面的字符
+                        if (index == -1)
+                            yy++;
+                        if (index != -1)
+                        {
+                            if (i == 0) { oo = index; }//第一位
+                            else//中间数
                             {
-                                if (gg < 13)
-                                {
-                                    string x = item.Substring(index, gg);
-                                    Console.WriteLine("{0}.第{1}行,第{2}个字母开始:“{3}...”;", o, count, index + 1, x);
-                                    cc = index + gg;
-                                o += 1;
-                                }
-                                else
-                                {
-                                    string x = item.Substring(index, 13);
-                                    Console.WriteLine("{0}.第{1}行,第{2}个字母开始:“{3}...”;",o, count, index + 1, x);
-                                    cc = index + 13;
-                                o += 1;
-                            }
+                                bb = index - oo - 4;
+                                oo = index;
                             }
                         }
+                        else
+                        {
+                            bb = item.Count() - cc;
+                            //去除多余，只取一次
+                            if (yy == 1)//最后位
+                            {
+                                if (bb > 9)
+                                    Console.WriteLine(item.Substring(cc, 9) + "”;");
+                                else
+                                    Console.WriteLine(item.Substring(cc, bb) + "”;");
+                            }
+                            continue;
+                        }
+                        if (cc != 0)//为第一与中间查询的服务
+                        {
+                            if (bb < 9)
+                                Console.WriteLine(item.Substring(cc, bb) + "”;");
+                            else
+                            { Console.WriteLine(item.Substring(cc, 9) + "”;"); }
+                        }
 
+                        //计算keyString的位置
+                        if (cc < item.Count() && index != -1)
+                        {
+                            count2++;
+                            string x = item.Substring(index, keyString.Length);
+                            Console.Write("{0}.第{1}行,第{2}个字母开始:“{3}", count2, count1, index + 1, x);
+
+                            cc = index + keyString.Length;
+                        }
                     }
 
-                
+                }
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine(@"这个例子需要一个名为 C:\temp\tempFile.txt 的文件。");
+                Console.WriteLine(@"这个例子需要一个名为 tempFile.txt 的文件。");
                 return;
             }
+
+           // var memoryAfter = GC.GetTotalMemory(false); // 检查使用迭代子并将结果输出到控制台之后的内存用量。
+           // Console.WriteLine("使用 Iterator 的内存用量 = \t" + string.Format(((memoryAfter - memoryBefore) / 1000).ToString(), "n") + "kb");
         }
 
 
@@ -194,7 +223,7 @@ namespace CDS002.IEnumerableWithGenericsDemo
             {
                 if (!this.disposedValue)
                 {
-                    if (disposing){  } // 析构所需要的资源
+                    if (disposing) { } // 析构所需要的资源
                     _current = null;
                     if (_sr != null)
                     {

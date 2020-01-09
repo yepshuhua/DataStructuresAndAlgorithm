@@ -2,9 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\Document",
-    "\\Document\\CardTest",
-    "\\Document\\CardTest\\CardTest"
+    "\\Source",
+    "\\Source\\CDS002.IEnumerableWithGenericsDemo"
   ],
-  "SelectedNode": "\\Document\\CardTest\\CardTest\\CardTest.sln",
+  "SelectedNode": "\\Source",
   "PreviewInSolutionExplorer": false
 }
